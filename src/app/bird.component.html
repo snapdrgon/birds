@@ -1,0 +1,5 @@
+<ul class="list-group">
+  <div  *ngFor="let bird of birdsObserver; let i = index" >
+  <li class="list-group-item">{{bird.name}} :{{bird.location}}:{{bird.numberSpotted}}:{{bird.dateObserved}}</li>
+  </div>
+</ul>
