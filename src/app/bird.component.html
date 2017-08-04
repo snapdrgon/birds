@@ -1,5 +1,16 @@
-<ul class="list-group">
-  <div  *ngFor="let bird of birdsObserver; let i = index" >
-  <li class="list-group-item">{{bird.name}} :{{bird.location}}:{{bird.numberSpotted}}:{{bird.dateObserved}}</li>
+<div class="container">
+  <div id="main">
+    <agm-map [latitude]="location.latitude" [longitude]="location.longitude" (mapClick)="placeMarker($event)">
+      <div  *ngFor="let bird of birdsObserver; let i = index" >
+      <agm-marker [title]="bird.name" [latitude]="bird.latitude" [longitude]="bird.longitude">
+        <agm-info-window>
+        <strong>{{bird.name}}</strong>
+        <hr>
+        <p *ngIf="bird.numberSpotted == 1">{{bird.numberSpotted}} bird found at {{bird.location}} </p>
+        <p *ngIf="bird.numberSpotted >1 ">{{bird.numberSpotted}} birds found at {{bird.location}} </p>
+        </agm-info-window> 
+      </agm-marker>
+      </div>
+    </agm-map>
   </div>
-</ul>
+</div>

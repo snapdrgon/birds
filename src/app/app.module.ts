@@ -7,6 +7,8 @@ import {BirdComponent} from './bird.component';
 import {HomeComponent} from './home.component';
 import { AppComponent } from './app.component';
 import { routing } from './app.router';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,10 @@ import { routing } from './app.router';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    AgmCoreModule.forRoot({
+      apiKey: 'API Key'
+    })
   ],
   providers: [BirdService],
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/RX';
 import {Injectable} from '@angular/core';
 import {BirdObserver} from './birdobserver';
-import {Loc} from './loc';
+import {Location} from './location';
 
 @Injectable()
 export class BirdService {
@@ -14,7 +14,7 @@ export class BirdService {
     constructor( private _http: Http){
     };
 
-    getBirds(location:Loc):Observable<BirdObserver[]> {
+    getBirds(location:Location):Observable<BirdObserver[]> {
         console.log(location);
         let headers = new Headers();
         headers.append('Content-Type','application/json');

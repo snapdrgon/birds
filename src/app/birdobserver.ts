@@ -4,4 +4,6 @@ export class BirdObserver {
     numberSpotted:number;
     dateObserved:Date;
     location:string;
+    latitude:number;
+    longitude:number;
 }

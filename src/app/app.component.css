@@ -5,3 +5,9 @@
 #snapmail {
 	float:left;
 }
+
+#footer {
+	position:relative;
+	top:60px;
+	padding: 25px;
+}

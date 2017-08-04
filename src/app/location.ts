@@ -1,4 +1,4 @@
-export class Loc {
+export class Location {
     latitude:number;
     longitude:number;
 }
