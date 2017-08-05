@@ -1,15 +1,41 @@
+
+  <div class="jumbotron">
+        <h1 class="display-3">Birds Spotted</h1>
+        <br>
+        <br>
+        <p class="lead">The Bird Spotting map below allows you to double click on the map and any birds spotted in the area will be marked
+          with the common name of the bird, the number spotted and the location. The information is provided through the 
+          Cornell Lab of Ornithology. For additional information on the birds spotted you can go to <span>
+            <a href="http://ebird.org/content/ebird/" target="_blank">eBird</a></span>
+        </p>
+        <hr class="my-4">
+    </div>
+<em id="credit">Photo by Adrianna Calvo on Pexels</em>   
+
 <div class="container">
   <div id="main">
-    <agm-map [latitude]="location.latitude" [longitude]="location.longitude" (mapClick)="placeMarker($event)">
+     <agm-map [latitude]="location.latitude" [longitude]="location.longitude" (mapDblClick)="placeMarker($event)">
       <div  *ngFor="let bird of birdsObserver; let i = index" >
-      <agm-marker [title]="bird.name" [latitude]="bird.latitude" [longitude]="bird.longitude">
-        <agm-info-window>
-        <strong>{{bird.name}}</strong>
-        <hr>
-        <p *ngIf="bird.numberSpotted == 1">{{bird.numberSpotted}} bird found at {{bird.location}} </p>
-        <p *ngIf="bird.numberSpotted >1 ">{{bird.numberSpotted}} birds found at {{bird.location}} </p>
-        </agm-info-window> 
-      </agm-marker>
+        <div *ngIf="serverFlag">
+          <agm-marker [title]="bird.name" [latitude]="bird.latitude" [longitude]="bird.longitude">
+            <agm-info-window>
+            <strong>{{bird.name}}</strong>
+            <hr>
+            <p *ngIf="bird.numberSpotted == 1">{{bird.numberSpotted}} bird spotted at {{bird.location}} </p>
+            <p *ngIf="bird.numberSpotted >1 ">{{bird.numberSpotted}} birds spotted at {{bird.location}} </p>
+            </agm-info-window> 
+          </agm-marker>
+        </div>
+        <div *ngIf="!serverFlag">
+          <agm-marker [title]="bird.comName" [latitude]="bird.lat" [longitude]="bird.lng">
+            <agm-info-window>
+            <strong>{{bird.comName}}</strong>
+            <hr>
+            <p *ngIf="bird.howMany == 1">{{bird.howMany}} bird spotted at {{bird.locName}} </p>
+            <p *ngIf="bird.howMany >1 ">{{bird.howMany}} birds spotted at {{bird.locName}} </p>
+            </agm-info-window> 
+          </agm-marker>
+        </div>
       </div>
     </agm-map>
   </div>

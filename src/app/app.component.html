@@ -1,23 +1,15 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">TakWare LLC</a>
-    </div>
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-fixed-top" style="background-color: #c096e0;height:65px;">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">TakWare LLC</a>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a [ngClass] = "_router.isActive('birds') ? 'active' : 'inactive'" routerLink='birds'>Birds</a></li>
-      <!--  <li><a [ngClass] = "_router.isActive('posts') ? 'active' : 'inactive'" routerLink='posts'>Posts</a></li>-->
-     </ul>
-    </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a [ngClass] = "_router.isActive('birds') ? 'active nav-link' : 'inactive nav-link'" routerLink='birds'>Birds</a>
+      </li>
+    </ul>
   </div>
 </nav>
 <div class="container">

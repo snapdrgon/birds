@@ -11,3 +11,8 @@
 	top:60px;
 	padding: 25px;
 }
+
+a {
+	text-decoration: none;
+	color: inherit; 
+}

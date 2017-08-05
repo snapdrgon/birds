@@ -3,5 +3,27 @@ agm-map {
 }
 #main {
 	position:relative;
-	top:60px;
+	top:30px;
+}
+
+.jumbotron {
+           color:black;
+           text-align: center;
+           background-image: url(../assets/images/sunset_calvo.jpg);
+					 min-height: 600px;
+					 background-position: center center;
+					 background-size: 100% 100%; 
+			 }
+
+	#credit {
+			color:black;
+			position:relative;
+			top:-20px;
+			left:10px;
+			text-align: left;
+	}
+
+a {
+		text-decoration: none;
+		color: inherit; 
 }

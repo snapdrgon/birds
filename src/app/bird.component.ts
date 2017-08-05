@@ -12,6 +12,7 @@ export class  BirdComponent implements OnInit {
     location = {latitude:0, longitude:0};
     birdsObserver:BirdObserver[] = [];
     firstPass:boolean = false;
+    serverFlag:boolean = false;
 
     constructor(private _service: BirdService) {
     }
@@ -35,7 +36,7 @@ export class  BirdComponent implements OnInit {
                     this.location = {latitude: position.coords.latitude, longitude:position.coords.longitude };
                     this.firstPass = true;
                 }
-                var observable = this._service.getBirds(this.location)
+                var observable = this._service.getBirds(this.location, this.serverFlag)
                 .subscribe(b=>b.forEach(
                     bird=>{
                     this.birdsObserver.push(bird);   
@@ -44,7 +45,7 @@ export class  BirdComponent implements OnInit {
             },  
             function() {
                 this.location  = {latitude:39.94,longitude: -105.12 };  
-                var observable = this._service.getBirds(location)
+                var observable = this._service.getBirds(location, this.serverFlag)
                 .subscribe(b=>b.forEach(
                     bird=>{
                     this.birdsObserver.push(bird);   
@@ -54,7 +55,7 @@ export class  BirdComponent implements OnInit {
         } else { 
             console.log("Geolocation is not supported by this browser. Using Broomfield, CO longitude and latitude.");
             this.location  = {latitude:39.94,longitude: -105.12 };  
-            var observable = this._service.getBirds(this.location)
+            var observable = this._service.getBirds(this.location, this.serverFlag)
             .subscribe(b=>b.forEach(
                 bird=>{
                 this.birdsObserver.push(bird);   
@@ -66,5 +67,4 @@ export class  BirdComponent implements OnInit {
     }
 
 }
-
 
