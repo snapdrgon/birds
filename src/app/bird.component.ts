@@ -22,8 +22,8 @@ export class  BirdComponent implements OnInit {
     }
 
     placeMarker($event){
-        console.log($event.coords.lat);
-        console.log($event.coords.lng);
+        //console.log($event.coords.lat);
+        //console.log($event.coords.lng);
         this.location = {latitude:$event.coords.lat, longitude:$event.coords.lng};
         this.populateMap();
     }
@@ -62,7 +62,7 @@ export class  BirdComponent implements OnInit {
                 }
             ));
         }       
-        console.log(this.birdsObserver);
+       // console.log(this.birdsObserver);
 
     }
 

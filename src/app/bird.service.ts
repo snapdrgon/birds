@@ -16,9 +16,8 @@ export class BirdService {
 
     getBirds(location:Location,serverFlag:boolean):Observable<BirdObserver[]> {
         this.url = serverFlag ? "http://localhost:50296/api/bird/" : 
-            "http://ebird.org/ws1.1/data/obs/geo/recent?lng=" + location.longitude + "&lat=" + location.latitude + "&fmt=json";
-        console.log(this.url);
-        console.log(location);
+            "https://ebird.org/ws1.1/data/obs/geo/recent?lng=" + location.longitude + "&lat=" + location.latitude + "&fmt=json";
+       // console.log(location);
         if (serverFlag) { //coming in from Web API
             let headers = new Headers();
             headers.append('Content-Type','application/json');
@@ -35,4 +34,3 @@ export class BirdService {
 
 }
 
-//http://localhost:50296/api/bird
