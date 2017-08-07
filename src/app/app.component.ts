@@ -8,6 +8,6 @@ import {Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(private _router:Router) {};
+  constructor(public _router:Router) {};
   
 }
