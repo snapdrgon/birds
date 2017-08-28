@@ -23,7 +23,7 @@ import { AgmCoreModule } from '@agm/core';
     HttpModule,
     routing,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyA_oBhsW_nLzszihk1zII0RyfCW6GrTB28'
+      apiKey: 'API Key'
     })
   ],
   providers: [BirdService, BirdDataService],
