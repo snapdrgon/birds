@@ -1,3 +1,4 @@
+import { BirdDataService } from './birddata.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -22,10 +23,10 @@ import { AgmCoreModule } from '@agm/core';
     HttpModule,
     routing,
     AgmCoreModule.forRoot({
-      apiKey: 'API Key'
+      apiKey: 'AIzaSyA_oBhsW_nLzszihk1zII0RyfCW6GrTB28'
     })
   ],
-  providers: [BirdService],
+  providers: [BirdService, BirdDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import {Component,OnInit,Input} from '@angular/core';
-import { BirdObserver } from './birdobserver';
+//import { BirdObserver } from './birdobserver';
 import { BirdService } from './bird.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { BirdService } from './bird.service';
 
 export class  BirdComponent implements OnInit {   
     location = {latitude:0, longitude:0};
-    birdsObserver:BirdObserver[] = [];
+    birdsObserver:any[] = [];
     firstPass:boolean = false;
     serverFlag:boolean = false;
 
@@ -39,7 +39,7 @@ export class  BirdComponent implements OnInit {
                 var observable = this._service.getBirds(this.location, this.serverFlag)
                 .subscribe(b=>b.forEach(
                     bird=>{
-                    this.birdsObserver.push(bird);   
+                    this.birdsObserver.push(bird);  
                     }
                 ));
             },  

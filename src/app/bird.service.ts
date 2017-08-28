@@ -4,32 +4,42 @@ import 'rxjs/RX';
 import {Injectable} from '@angular/core';
 import {BirdObserver} from './birdobserver';
 import {Location} from './location';
+import { BirdDataService } from './birddata.service';
 
 @Injectable()
 export class BirdService {
-
-
+    birdObservable:Observable<any>;
+    birdObserver:BirdObserver = new BirdObserver();
     private url = "http://localhost:50296/api/bird/";
 
-    constructor( private _http: Http){
+    constructor( private _http: Http, private _birdDataService:BirdDataService){
     };
 
-    getBirds(location:Location,serverFlag:boolean):Observable<BirdObserver[]> {
+    getBirds(location:Location,serverFlag:boolean):Observable<any[]> {
+       
         this.url = serverFlag ? "http://localhost:50296/api/bird/" : 
             "https://ebird.org/ws1.1/data/obs/geo/recent?lng=" + location.longitude + "&lat=" + location.latitude + "&fmt=json";
-       // console.log(location);
         if (serverFlag) { //coming in from Web API
             let headers = new Headers();
             headers.append('Content-Type','application/json');
-            var  birdObservable = this._http.put(this.url, JSON.stringify(location), { headers: headers} )
+            this.birdObservable = this._http.put(this.url, JSON.stringify(location), { headers: headers} )
             .map(resp => resp.json());
         }
         else { //coming in from Cornell Ornithology API directly
-            var  birdObservable = this._http.get(this.url)
+            this.birdObservable = this._http.get(this.url)
             .map(resp => resp.json());
          }
 
-        return birdObservable;
+         //now save to mongoDB
+         this.birdObservable.forEach(birds=>{
+             birds.forEach(bird=>{
+                //console.log(bird);
+                this._birdDataService.saveBird(bird)
+                .subscribe();
+             })
+         })
+ 
+        return this.birdObservable;
     }
 
 }
